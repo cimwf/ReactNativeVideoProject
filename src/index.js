@@ -1,12 +1,19 @@
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
-import Video from 'react-native-video'
+import { View, StyleSheet } from 'react-native'
 import background from './assets/background.mp4'
-
+import Orientation from 'react-native-orientation-locker';
+import VideoPlayer from 'react-native-video-controls'
 class App extends React.Component {
     constructor(props) {
         super(props)
         this.videoRef = React.createRef()
+        this.state = {
+            isPaused: false
+        }
+    }
+
+    componentDidMount() {
+        Orientation.lockToLandscape()
     }
 
     onBuffer = (a) => {
@@ -19,19 +26,12 @@ class App extends React.Component {
 
     render() {
         return (
-            <View>
-                <Text>Hello world</Text>
-                <Video 
-                    // Can be a URL or a local file.
+            <View style={{ flex:1 }}>
+                <VideoPlayer 
                     source={background}
-                    // Store reference  
-                    ref={this.videoRef}
-                    // Callback when remote video is buffering                                      
-                    onBuffer={this.onBuffer}
-                    // Callback when video cannot be loaded              
-                    onError={this.onError}               
-                    style={styles.backgroundVideo}
+                    tapAnywhereToPause={true}
                 />
+
             </View>
         )
     }
@@ -39,11 +39,7 @@ class App extends React.Component {
 
 const styles = StyleSheet.create({
     backgroundVideo: {
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      bottom: 0,
-      right: 0,
+     flex: 1,
     },
   });
 
