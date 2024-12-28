@@ -1,46 +1,28 @@
 import React from 'react'
-import { View, StyleSheet } from 'react-native'
-import background from './assets/background.mp4'
-import Orientation from 'react-native-orientation-locker';
-import VideoPlayer from 'react-native-video-controls'
-class App extends React.Component {
-    constructor(props) {
-        super(props)
-        this.videoRef = React.createRef()
-        this.state = {
-            isPaused: false
-        }
-    }
+import { NavigationContainer } from '@react-navigation/native'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import Home from './view/Home'
+import Demo from './view/Demo'
+import MovieList from './view/MovieList'
+import Detail from './view/Detail'
+import Video from './view/Video'
 
-    componentDidMount() {
-        Orientation.lockToLandscape()
-    }
+const Stack = createNativeStackNavigator()
 
-    onBuffer = (a) => {
-        console.log('onBuffer', a)
-    }
-
-    onError = (a) => {
-        console.log('onError', a)
-    }
-
-    render() {
-        return (
-            <View style={{ flex:1 }}>
-                <VideoPlayer 
-                    source={background}
-                    tapAnywhereToPause={true}
-                />
-
-            </View>
-        )
-    }
+function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName={'Home'} screenOptions={{
+        headerShown: false
+      }}>
+        <Stack.Screen name={'Home'} component={Home} />
+        <Stack.Screen name={'MovieList'} component={MovieList} />
+        <Stack.Screen name={'Detail'} component={Detail} />
+        <Stack.Screen name={'Video'} component={Video} />
+        <Stack.Screen name={'Demo'} component={Demo} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  )
 }
-
-const styles = StyleSheet.create({
-    backgroundVideo: {
-     flex: 1,
-    },
-  });
 
 export default App
