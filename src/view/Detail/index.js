@@ -43,45 +43,45 @@ class Detail extends React.Component {
                 <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', paddingTop: 50 }}>
                     <View style={{ width: 240, height: 140, marginRight: 20 }}>
                         <Image style={{ width: '100%', height: '100%' }} source={{ uri: cover_path }} />
-                        <View style={{ position: 'absolute', width: '100%', bottom: 0, flexDirection: 'row', justifyContent: 'space-between' }}>
+                        <View style={{ position: 'absolute', width: '100%', bottom: 0, flexDirection: 'row', justifyContent: 'space-between', backgroundColor: 'rgba(0, 0, 0, 0.4)' }}>
                             <View style={{ width: 200 }}>
-                                <Text numberOfLines={1} style={{ color: '#333', fontSize: 16 }}>{name}</Text>
+                                <Text numberOfLines={1} style={{ color: '#fff', fontSize: 16 }}>{name}</Text>
                             </View>
                             {/* <Text style={{ color: 'gold', fontSize: 16, fontWeight: 'bold' }}>5.0</Text> */}
                         </View>
                     </View>
                     <View style={{ width: 240, height: 120 }}>
                         <View style={{ flexDirection: 'row' }}>
-                            <Text style={{ fontSize: 16, color: '#fff', fontWeight: 'bold', marginRight: 10, marginBottom: 5 }}>导演</Text>
-                            <Text style={{ fontSize: 16, color: '#fff' }}>{director.join(',')}</Text>
+                            <Text style={{ fontSize: 16, color: '#626061', fontWeight: 'bold', marginRight: 10, marginBottom: 5 }}>导演</Text>
+                            <Text style={{ fontSize: 16, color: '#797b7a' }}>{director.join(',')}</Text>
                         </View>
                         <View style={{ flexDirection: 'row' }}>
-                            <Text style={{ fontSize: 16, color: '#fff', fontWeight: 'bold', marginRight: 10, marginBottom: 5 }}>主演</Text>
-                            <Text style={{ fontSize: 16, color: '#fff' }}>{actors.join(',')}</Text>
+                            <Text style={{ fontSize: 16, color: '#626061', fontWeight: 'bold', marginRight: 10, marginBottom: 5 }}>主演</Text>
+                            <Text style={{ fontSize: 16, color: '#797b7a' }}>{actors.join(',')}</Text>
                         </View>
                         <View style={{ flexDirection: 'row' }}>
-                            <Text style={{ fontSize: 16, color: '#fff', fontWeight: 'bold', marginRight: 10, marginBottom: 5 }}>类型</Text>
-                            <Text style={{ fontSize: 16, color: '#fff' }}>{type.join(',')}</Text>
+                            <Text style={{ fontSize: 16, color: '#626061', fontWeight: 'bold', marginRight: 10, marginBottom: 5 }}>类型</Text>
+                            <Text style={{ fontSize: 16, color: '#797b7a' }}>{type.join(',')}</Text>
                         </View>
                         <View style={{ flexDirection: 'row' }}>
-                            <Text style={{ fontSize: 16, color: '#fff', fontWeight: 'bold', marginRight: 10, marginBottom: 5 }}>地区</Text>
-                            <Text style={{ fontSize: 16, color: '#fff' }}>{local}</Text>
+                            <Text style={{ fontSize: 16, color: '#626061', fontWeight: 'bold', marginRight: 10, marginBottom: 5 }}>地区</Text>
+                            <Text style={{ fontSize: 16, color: '#797b7a' }}>{local}</Text>
                         </View>
                         <View style={{ flexDirection: 'row' }}>
-                            <Text style={{ fontSize: 16, color: '#fff', fontWeight: 'bold', marginRight: 10 }}>年度</Text>
-                            <Text style={{ fontSize: 16, color: '#fff' }}>{year}</Text>
+                            <Text style={{ fontSize: 16, color: '#626061', fontWeight: 'bold', marginRight: 10 }}>年度</Text>
+                            <Text style={{ fontSize: 16, color: '#797b7a' }}>{year}</Text>
                         </View>
                     </View>
                 </View>
                 <View style={{ width: 500, marginTop: 5 }}>
                     <View style={{ width: '100%' }}>
-                        <Text style={{ color: '#fff', fontSize: 16 }}>{description}</Text>
+                        <Text style={{ color: '#797b7a', fontSize: 16 }}>{description}</Text>
                     </View>
                     <View style={{ flexDirection: 'row', marginTop: 10, flexWrap: 'wrap' }}>
                         {
                             play_list.map((item, index) => {
                                 return (
-                                    <TouchableOpacity onPress={() => this.onPlay(item.path)} key={ item.name + index } style={{ paddingHorizontal: 20, paddingVertical: 4, backgroundColor: 'rgba(255, 255, 255, 0.3)', justifyContent: 'center', alignItems: 'center', marginRight: 20, marginBottom: 10 }}>
+                                    <TouchableOpacity onPress={() => this.onPlay(item.path)} key={ item.name + index } style={{ paddingHorizontal: 20, paddingVertical: 4, backgroundColor: 'rgba(255, 255, 255, 0.2)', justifyContent: 'center', alignItems: 'center', marginRight: 20, marginBottom: 10 }}>
                                         <Text style={{ color: '#fff', fontSize: 16 }}>{item.name}</Text>
                                     </TouchableOpacity>
                                 )

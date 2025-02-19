@@ -10,6 +10,7 @@ class MovieList extends React.Component {
             movieList: [],
             movieLocal: '大陆'
         }
+        this.localList = ['大陆', '韩国', '日本', '欧美', '港台']
     }
 
     componentDidMount() {
@@ -49,35 +50,29 @@ class MovieList extends React.Component {
     render() {
         return (
             <View style={{ flex:1, backgroundColor: '#000', flexDirection: 'row' }}>
-                <View style={{ width: 80, height: '100%', backgroundColor: '#333' }}>
+                <View style={{ width: 140, height: '100%', backgroundColor: '#202020' }}>
                     <TouchableOpacity style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }} onPress={this.onBack}>
-                        <Text style={{ color: '#fff', fontSize: 18 }}>返回</Text>
+                        <Text style={{ color: '#707070', fontSize: 18 }}>返回</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => this.onChangeLocal('大陆')} style={[{ flex: 1, justifyContent: 'center', alignItems: 'center' }, this.state.movieLocal === '大陆' ? { backgroundColor: '#000' } : {} ]}>
-                        <Text style={{ color: '#fff', fontSize: 18 }}>大陆</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={() => this.onChangeLocal('韩国')} style={[{ flex: 1, justifyContent: 'center', alignItems: 'center' }, this.state.movieLocal === '韩国' ? { backgroundColor: '#000' } : {} ]}>
-                        <Text style={{ color: '#fff', fontSize: 18 }}>韩国</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={() => this.onChangeLocal('日本')} style={[{ flex: 1, justifyContent: 'center', alignItems: 'center' }, this.state.movieLocal === '日本' ? { backgroundColor: '#000' } : {} ]}>
-                        <Text style={{ color: '#fff', fontSize: 18 }}>日本</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={() => this.onChangeLocal('欧美')} style={[{ flex: 1, justifyContent: 'center', alignItems: 'center' }, this.state.movieLocal === '欧美' ? { backgroundColor: '#000' } : {} ]}>
-                        <Text style={{ color: '#fff', fontSize: 18 }}>欧美</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={() => this.onChangeLocal('港台')} style={[{ flex: 1, justifyContent: 'center', alignItems: 'center' }, this.state.movieLocal === '港台' ? { backgroundColor: '#000' } : {} ]}>
-                        <Text style={{ color: '#fff', fontSize: 18 }}>港台</Text>
-                    </TouchableOpacity>
+                    {
+                        this.localList.map((item) => {
+                            return (
+                                <TouchableOpacity onPress={() => this.onChangeLocal(item)} style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                                    <Text style={[{ color: '#707070', fontSize: 18 }, this.state.movieLocal === item? { color: '#dd9731', fontWeight: 'bold', fontSize: 20 } : {}]}>{item}</Text>
+                                </TouchableOpacity>
+                            )
+                        })
+                    }
                 </View>
-                <ScrollView style={{ flex: 1 }} contentContainerStyle={{ flexDirection: 'row', flexWrap: 'wrap', padding: 10 }}>
+                <ScrollView style={{ flex: 1 }} contentContainerStyle={{ flexDirection: 'row', flexWrap: 'wrap', paddingVertical: 10, paddingLeft: 20 }}>
                     {
                         this.state.movieList.map((item) => {
                             return (
-                                <TouchableOpacity onPress={() => this.onDetail(item.id)} key={item.id} style={{ width: 140, height: 200, marginRight: 10, marginBottom: 10 }}>
+                                <TouchableOpacity onPress={() => this.onDetail(item.id)} key={item.id} style={{ width: 140, height: 200, marginRight: 20, marginBottom: 20 }}>
                                     <Image style={{ width: '100%', height: '100%' }} source={{ uri: item.cover_path }} />
-                                    <View style={{ position: 'absolute', bottom: 0, width: '100%', flexDirection: 'row', justifyContent: 'space-between' }}>
+                                    <View style={{ position: 'absolute', bottom: 0, width: '100%', flexDirection: 'row', justifyContent: 'space-between', backgroundColor: 'rgba(0, 0, 0, 0.4)' }}>
                                         <View style={{ width: 100 }}>
-                                            <Text numberOfLines={1} style={{ color: '#333', fontSize: 16 }}>{item.name}</Text>
+                                            <Text numberOfLines={1} style={{ color: '#fff', fontSize: 16 }}>{item.name}</Text>
                                         </View>
                                         {/* <Text style={{ color: 'gold', fontSize: 16, fontWeight: 'bold' }}>5.0</Text> */}
                                     </View>

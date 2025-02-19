@@ -1,5 +1,5 @@
 import React from'react'
-import { View, TouchableOpacity, Text, StatusBar, Image } from'react-native'
+import { View, TouchableOpacity, Text, StatusBar, Image, StyleSheet } from'react-native'
 import Orientation from 'react-native-orientation-locker';
 import Http from '../../Http'
 
@@ -46,9 +46,9 @@ class Home extends React.Component {
                         return (
                             <TouchableOpacity key={item.id} onPress={() => this.onDetail(item.id)} style={{ width: 140, height: 200 }}>
                                 <Image style={{ width: '100%', height: '100%' }} source={{ uri: item.cover_path }} />
-                                <View style={{ position: 'absolute', bottom: 0, width: '100%', flexDirection: 'row', justifyContent: 'space-between' }}>
+                                <View style={{ position: 'absolute', bottom: 0, width: '100%', flexDirection: 'row', justifyContent: 'space-between', backgroundColor: 'rgba(0, 0, 0, 0.4)' }}>
                                     <View style={{ width: 100 }}>
-                                        <Text numberOfLines={1} style={{ color: '#333', fontSize: 16 }}>{item.name}</Text>
+                                        <Text numberOfLines={1} style={{ color: '#fff', fontSize: 16 }}>{item.name}</Text>
                                     </View>
                                     {/* <Text style={{ color: 'gold', fontSize: 16, fontWeight: 'bold' }}>5.0</Text> */}
                                 </View>
@@ -58,27 +58,43 @@ class Home extends React.Component {
                 }
                 </View>
                 <View style={{ height: 80, width: '100%', flexDirection: 'row' }}>
-                    <TouchableOpacity onPress={() => this.onMovieList('电影')} style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#202020', marginRight: 10 }}>
-                        <Image style={{ width: 40, height: 40 }} source={require('../../assets/movie.png')}  />
-                        <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#afafaf' }}>电影</Text>
+                    <TouchableOpacity onPress={() => this.onMovieList('电影')} style={styles.tab}>
+                        <Image style={{ width: 26, height: 26, marginBottom: 3 }} source={require('../../assets/movie.png')}  />
+                        <Text style={styles.tabText}>电影</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => this.onMovieList('剧集')} style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#202020', marginRight: 10 }}>
-                        <Image style={{ width: 40, height: 40 }} source={require('../../assets/episode.png')}  />
-                        <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#afafaf' }}>剧集</Text>
+                    <TouchableOpacity onPress={() => this.onMovieList('剧集')} style={styles.tab}>
+                        <Image style={{ width: 34, height: 34 }} source={require('../../assets/episode.png')}  />
+                        <Text style={styles.tabText}>剧集</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => this.onMovieList('综艺')} style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#202020', marginRight: 10 }}>
-                        <Image style={{ width: 40, height: 40 }} source={require('../../assets/variety.png')}  />
-                        <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#afafaf' }}>综艺</Text>
+                    <TouchableOpacity onPress={() => this.onMovieList('综艺')} style={styles.tab}>
+                        <Image style={{ width: 38, height: 38 }} source={require('../../assets/variety.png')}  />
+                        <Text style={styles.tabText}>综艺</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => this.onMovieList('少儿')} style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#202020', marginRight: 10 }}>
-                        <Image style={{ width: 40, height: 40 }} source={require('../../assets/child.png')}  />
-                        <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#afafaf' }}>少儿</Text>
+                    <TouchableOpacity onPress={() => this.onMovieList('少儿')} style={styles.tab}>
+                        <Image style={{ width: 30, height: 30 }} resizeMode={'contain'} source={require('../../assets/child.png')}  />
+                        <Text style={styles.tabText}>少儿</Text>
                     </TouchableOpacity>
                 </View>
             </View>
         )
     }
 }
+
+const styles = StyleSheet.create({ 
+    tab: {
+        flex: 1, 
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        backgroundColor: '#202020', 
+        marginRight: 10
+    },
+    tabText: {
+        color: '#929292',
+        fontSize: 16,
+        fontWeight: 'bold'
+    }
+    
+})
 
 
 export default Home
