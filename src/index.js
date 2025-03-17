@@ -6,6 +6,7 @@ import Demo from './view/Demo'
 import MovieList from './view/MovieList'
 import Detail from './view/Detail'
 import Video from './view/Video'
+import Verify from './view/Verify'
 
 const Stack = createNativeStackNavigator()
 
@@ -15,6 +16,7 @@ function App() {
       <Stack.Navigator initialRouteName={'Home'} screenOptions={{
         headerShown: false
       }}>
+        <Stack.Screen name={'Verify'} component={Verify} />
         <Stack.Screen name={'Home'} component={Home} />
         <Stack.Screen name={'MovieList'} component={MovieList} />
         <Stack.Screen name={'Detail'} component={Detail} />
